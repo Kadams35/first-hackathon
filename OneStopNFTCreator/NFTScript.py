@@ -41,8 +41,8 @@ def mintNFT(algod_client, creator_address, creator_private_key, asset_name, asse
         metadata_hash=hashlib.sha256(metadata_json.encode()).hexdigest()
     )
 
-    # signed_txn = txn.sign(creator_private_key)
-    # txid = algod_client.send_transaction(signed_txn)
+    signed_txn = txn.sign(creator_private_key)
+    txid = algod_client.send_transaction(signed_txn)
     # print(f"Asset creation txid: {txid}")
 
     confirmed_txn = algod_client.pending_transaction_info(txid)
